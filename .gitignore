@@ -1,0 +1,9 @@
+CMakeCache.txt
+CMakeFiles/*
+cmake_install.cmake
+latex/*
+libScalarToyLib.a
+run_wave
+scalarFunction.o
+singleDomainWave.o
+*~
