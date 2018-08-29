@@ -2,20 +2,20 @@
 
 ## usage:
 
->./run-wave --help
+`>./run-wave --help`
 
-Options:
---help                show this help message
---id arg              specify initial data type (sin,fastsin,pulse)
---bc arg              specify right boundary condition (transmit,reflect)
---data                dump time-series collocation data to stdout
---dom arg             specify number of domains
---dur arg             duration of simulation
---step arg            size of simulation timestep
---type arg            type of spectral simulation (coll,dg)
---ord arg             spectral order
---no-vis              turn off default visualizations
---verbose             turn on periodic status updates during simulation
+`Options:`
+`--help                show this help message`
+`--id arg              specify initial data type (sin,fastsin,pulse)`
+`--bc arg              specify right boundary condition (transmit,reflect)`
+`--data                dump time-series collocation data to stdout`
+`--dom arg             specify number of domains`
+`--dur arg             duration of simulation`
+`--step arg            size of simulation timestep`
+`--type arg            type of spectral simulation (coll,dg)`
+`--ord arg             spectral order`
+`--no-vis              turn off default visualizations`
+`--verbose             turn on periodic status updates during simulation`
 
 
 Default is to run a simple transmitting wave using discontinuous Galerkin method
