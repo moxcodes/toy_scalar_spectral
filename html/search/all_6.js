@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['legendre',['legendre',['../classlegendreTools_1_1legendre.html',1,'legendreTools::legendre'],['../classlegendreTools_1_1legendre.html#aadbc5d742d698baf0f7b06aecb1cdcb5',1,'legendreTools::legendre::legendre()']]],
-  ['legendredderiv',['legendreDDeriv',['../namespacelegendreTools.html#a4bc9673dec1f9e7ccd7431d64e0cfddf',1,'legendreTools']]],
-  ['legendrederiv',['legendreDeriv',['../namespacelegendreTools.html#a3405fbec14c82d6d3828f2b276b64e8a',1,'legendreTools']]],
-  ['legendretools',['legendreTools',['../namespacelegendreTools.html',1,'']]]
+  ['generateabscissas',['generateAbscissas',['../namespacelegendreTools.html#a76b554763f20f0b62655c549b700cf88',1,'legendreTools']]],
+  ['generatebaryweights',['generateBaryWeights',['../namespacelegendreTools.html#a8ae3463a30f3e3550569429101a605e2',1,'legendreTools']]],
+  ['generatedmat',['generateDMat',['../namespacelegendreTools.html#adf02c932b6271a7c7e08b9d0992aac8b',1,'legendreTools']]],
+  ['generateglabscissas',['generateGLAbscissas',['../namespacelegendreTools.html#acb9f278cc2647225a37ebc53ba2bda58',1,'legendreTools']]],
+  ['generateglweights',['generateGLWeights',['../namespacelegendreTools.html#ac48c2ff745ef36c3e7962cd1fb9a3f0b',1,'legendreTools']]],
+  ['generateweights',['generateWeights',['../namespacelegendreTools.html#adf85600ca12293e651253734f7eea599',1,'legendreTools']]]
 ];

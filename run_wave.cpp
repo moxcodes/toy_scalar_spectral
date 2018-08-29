@@ -176,12 +176,12 @@ int main(int argv, char * args[])
   if(verb) printf("initializing ode integrator \n");
   if(isDG)
     {
-      auto wave = DGTransmittingMultiWave(orders,abscissas,weights,DMats,step,doms,boundData,isReflecting,verb);
+      auto wave = DGTransmittingMultiWave(orders,abscissas,weights,DMats,doms,boundData,isReflecting,verb);
       odeEvolve(x,wave,duration,step,waveHist);
     }
   else
     {
-      auto wave = collTransmittingMultiWave(orders,abscissas,weights,DMats,step,doms,boundDatadx,isReflecting,verb);
+      auto wave = collTransmittingMultiWave(orders,abscissas,weights,DMats,doms,boundDatadx,isReflecting,verb);
       odeEvolve(x,wave,duration,step,waveHist);
     }
   

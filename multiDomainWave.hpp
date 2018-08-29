@@ -13,26 +13,50 @@ struct functionStateHistory
   functionStateHistory(){}
 };
 
-/// A structure for holding a 
+/// A structure for holding the history of a single domain, which just holds a
+/// vector of function state histories (as each domain can have multiple
+/// functions)
 struct elementStateHistory
 {
-  std::vector<functionStateHistory> functionStates;
+  std::vector<functionStateHistory> functionStates;///< a vector of function histories
   elementStateHistory(){}
 };
 
 
+/// A structure for storing the history of a full wave evolution, which can have
+/// multiple functions in each domain, and potentially several domains. This
+/// structure can be used as the history object to be passed to boost ode
+/// libraries.
 struct multiStateHistory
 {
-  std::vector<elementStateHistory> &elementStates;
-  std::vector<double>& m_times;
-  std::vector<int> n;
-  int doms;
-  int funcs;
+  std::vector<elementStateHistory> &elementStates; ///< the vector of histories for the several domains
+  std::vector<double>& m_times; ///< a vector of times, which should align with the states at the innermost of the domain heirarchies
+  std::vector<int> n; ///< legendre order, so number of collocation points in each function
+  int doms; ///< number of domains
+  int funcs; ///< number of functions
 
-  //assumes full tree is intantiated with an initial data element
-  multiStateHistory(std::vector<int> in_n, int domains, int functions, std::vector<elementStateHistory> &states, std::vector<double> &times)
+  /// history constructor. Importantly, the elementStateHistory MUST be populated
+  /// with the initial data for the routine to work properly, as scalarFunctions
+  /// store more data than can be provided by the boost ode library
+  /// \param in_n Legendre order of approximation
+  /// \param domains number of domains in the simulation
+  /// \param functions number of functions in each domain  
+  /// \param states the Histories, already populated with initial data
+  /// scalarFunctions - these will be populated by reference
+  /// \param times the times, populated with initial time - these will be
+  /// populated by reference
+  multiStateHistory(std::vector<int> in_n, int domains, int functions,
+		    std::vector<elementStateHistory> &states, std::vector<double> &times)
     : n(in_n), elementStates(states), doms(domains), funcs(functions), m_times(times){}
 
+
+  /// Storage operator for use with boost ode integrators. Takes a flat input
+  /// and organizes it into the spectral data hierarchy, stores it in the
+  /// history values. Organization is assumed to follow structure of (domain 0,
+  /// function 0);(domain 0, function 1);(domain 1, function 0);(domain 1,
+  /// function 1)...
+  /// \param x raw flattened ode data
+  /// \param t simulation time
   void operator()(const std::vector<double> &x, double t)
   {
     int elstart =0;
@@ -51,35 +75,71 @@ struct multiStateHistory
   int test(double i){return 0;}
 };
 
+
+/// Parent class for the various wave function implementations
 class multiDomainWave{
 public:
-  std::vector<int> n;
-  int doms;
-  std::vector<std::shared_ptr<std::vector<double>>> abscissas;
-  std::vector<std::shared_ptr<std::vector<double>>> weights;
-  std::vector<std::shared_ptr<matrix<double>>> DMats;
-  std::function<double(double)> boundData;
-  bool verbose;
+  std::vector<int> n;///< spectral order of the evolution
+  int doms; ///< number of domains
+  std::vector<std::shared_ptr<std::vector<double>>> abscissas; ///< a vector of abscissas storage, one for each domain
+  std::vector<std::shared_ptr<std::vector<double>>> weights; ///< a vector of weight storage, one for each domain
+  std::vector<std::shared_ptr<matrix<double>>> DMats; ///< a vector of derivative matrix storage, one for each domain
+  std::function<double(double)> boundData; ///< a function for the left boundary data
+  bool verbose;///< a flag for outputting status checkpoints to stdout
 
+  /// The generic wave constructor, takes in much data about wave options
+  /// \param ord Legendre order of simulation
+  /// \param in_abscissas vector of abscissa data, one for each domain
+  /// \param in_weights vector of weight data, one for each domain
+  /// \param in_DMats vector of derivative matrix data, one for each domain
+  /// \param domains number of domains
+  /// \param in_boundData a function representing information about the driving boundary
+  /// \param in_verbose whether the function should output status checkpounts
   multiDomainWave(std::vector<int> ord, std::vector<std::shared_ptr<std::vector<double>>> in_abscissas,
-		  std::vector<std::shared_ptr<std::vector<double>>> in_weights, std::vector<std::shared_ptr<matrix<double>>> in_DMats,
-		  double timestep, int domains, std::function<double(double)> in_boundData, bool in_verbose)
+		  std::vector<std::shared_ptr<std::vector<double>>> in_weights,
+		  std::vector<std::shared_ptr<matrix<double>>> in_DMats,
+		  int domains, std::function<double(double)> in_boundData, bool in_verbose)
     : n(ord), abscissas(in_abscissas),weights(in_weights),DMats(in_DMats), verbose(in_verbose), boundData(in_boundData), doms(domains) {}
 
+  /// virtual evolution operator - to be overwritten in all inherited classes
   virtual void operator () (const std::vector<double> &x, std::vector<double> &dxdt, const double t){}
 };
 
+
+/// A specialization class from multiDomainWave for the collocation point wave
+/// multiple-domain simulation. This multi-domain method is intended for use
+/// with Gauss-Lobatto abscissas, and evolves by ensuring consistency between
+/// the -1 and 1 abscissas at neighboring domains.
 class collTransmittingMultiWave: public multiDomainWave{
 
 public:
-  bool reflect;
-  
+  bool reflect; ///< true if reflecting right bound, false if transmitting
+
+  /// The collocation wave constructor, takes in much data about wave options
+  /// \param ord Legendre order of simulation
+  /// \param in_abscissas vector of abscissa data, one for each domain
+  /// \param in_weights vector of weight data, one for each domain
+  /// \param in_DMats vector of derivative matrix data, one for each domain
+  /// \param domains number of domains
+  /// \param in_boundData a function representing the first time derivative used for left bound
+  /// \param isReflecting true if right bound should reflect, false if transmit
+  /// \param in_verbose whether the function should output status checkpounts
   collTransmittingMultiWave(std::vector<int> ord, std::vector<std::shared_ptr<std::vector<double>>> in_abscissas,
 			    std::vector<std::shared_ptr<std::vector<double>>> in_weights,
-			    std::vector<std::shared_ptr<matrix<double>>> in_DMats, double timestep, int domains,
+			    std::vector<std::shared_ptr<matrix<double>>> in_DMats, int domains,
 			    std::function<double(double)> in_boundData, bool isReflecting, bool in_verbose)
-    : multiDomainWave(ord,in_abscissas,in_weights,in_DMats,timestep,domains,in_boundData,in_verbose), reflect(isReflecting) {}
-  
+    : multiDomainWave(ord,in_abscissas,in_weights,in_DMats,domains,in_boundData,in_verbose), reflect(isReflecting) {}
+
+  /// Wave evolution operator, for use in boost ode libraries. This gives the
+  /// first derivative of each collocation point with respect to time by
+  /// computing the first derivatives in each domain, and using neighboring
+  /// domains to infer the derivative at the shared boundary points, which are
+  /// constrained to evolve identically.
+  /// \param x the set of flattened collocation points
+  /// \param dxdt the set of first derivatives with respect to time - populated
+  /// by this function as return parameter
+  /// \param t simulation time of the timestep considered
+  /// \sa bulkEvolve
   void operator() ( const std::vector<double> &x, std::vector<double> &dxdt, const double t)
   {
     // 2 steps : first evolve the bulk of each domain and get out the presumed time dependence
@@ -124,6 +184,17 @@ public:
 	printf("simulation time t=%f",t);
   }
 
+
+  /// Function for evolving the bulk of the individual elements
+  /// \param x the full flattened collocation points (for all domains)
+  /// \param dxdt the full set of collocation first derivative to be populated,
+  /// partially populated (for a single domain) as a return parameter of this
+  /// function
+  /// \param el number of the domain element to be populated
+  /// \param elstart the index in the full flattened data of the start of the
+  /// element to be populated
+  /// \return a vector of the boundary derivatives (left psi, left pi, right
+  /// psi, right pi)
   std::vector<double> bulkEvolve(const std::vector<double> &x, std::vector<double> &dxdt,int el,int elstart)
   {
     std::shared_ptr<std::vector<double>> pi(new std::vector<double>(x.begin()+elstart,x.begin()+elstart+n[el]));
@@ -140,21 +211,24 @@ public:
 };
 
 
+/// A specialization class from multiDomainWave for the Discontinuous Galerkin
+/// wave multiple-domain simulation. This multi-domain method is intended for
+/// use with Legendre Gauss abscissas, and evolves by imposing numerical fluxes
+/// between domains
 class DGTransmittingMultiWave: public multiDomainWave{
 public:
-  // required for evaluating the flux values
-  std::vector<std::vector<double>> leftInterpolant;
-  std::vector<std::vector<double>> rightInterpolant;
-  std::vector<std::shared_ptr<std::vector<double>>> baryWeights;
+  std::vector<std::vector<double>> leftInterpolant;///< the interpolant values for the point -1 for each domain
+  std::vector<std::vector<double>> rightInterpolant;///< the interpolant values for the point 1 for each domain
+  std::vector<std::shared_ptr<std::vector<double>>> baryWeights;///< the barycentric weights data for each domain
 
-  std::vector<matrix<double>*> DMatsHat;
-  bool reflect;
+  std::vector<matrix<double>*> DMatsHat; ///< the adjusted matrix datas for the DG computation
+  bool reflect;///< true if right boundary should reflect, false if transmit
 
   DGTransmittingMultiWave(std::vector<int> ord, std::vector<std::shared_ptr<std::vector<double>>> in_abscissas,
 			  std::vector<std::shared_ptr<std::vector<double>>> in_weights,
-			  std::vector<std::shared_ptr<matrix<double>>> in_DMats, double timestep, int domains,
+			  std::vector<std::shared_ptr<matrix<double>>> in_DMats, int domains,
 			  std::function<double(double)> in_boundData, bool isReflecting, bool in_verbose)
-    : multiDomainWave(ord,in_abscissas,in_weights,in_DMats,timestep,domains,in_boundData,in_verbose),reflect(isReflecting)
+    : multiDomainWave(ord,in_abscissas,in_weights,in_DMats,domains,in_boundData,in_verbose),reflect(isReflecting)
   {
     double lefts;
     double leftt;

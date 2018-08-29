@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['checker',['checker',['../structcheckHistoryEval_1_1checker.html',1,'checkHistoryEval&lt; T &gt;::checker&lt; U, f &gt;'],['../structcheckWaveEval_1_1checker.html',1,'checkWaveEval&lt; T &gt;::checker&lt; U, f &gt;']]],
-  ['checkhistoryeval',['checkHistoryEval',['../structcheckHistoryEval.html',1,'']]],
-  ['checkwaveeval',['checkWaveEval',['../structcheckWaveEval.html',1,'']]],
-  ['collocationdata',['collocationData',['../classscalarFunction.html#a8152c657293374b427068d94131d64dd',1,'scalarFunction']]],
-  ['colltransmittingmultiwave',['collTransmittingMultiWave',['../classcollTransmittingMultiWave.html',1,'']]]
+  ['baryweights',['baryWeights',['../classDGTransmittingMultiWave.html#a653ac6605725eea17703adb0f43a7216',1,'DGTransmittingMultiWave']]],
+  ['bounddata',['boundData',['../classmultiDomainWave.html#a106075024bd391e1a971a7d1eedfa556',1,'multiDomainWave']]],
+  ['bulkevolve',['bulkEvolve',['../classcollTransmittingMultiWave.html#ac6a88e8b0ff9544bad2a650e5e547abb',1,'collTransmittingMultiWave']]]
 ];

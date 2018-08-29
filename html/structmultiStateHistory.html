@@ -75,14 +75,14 @@ $(function() {
 <div class="title">multiStateHistory Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="multiDomainWave_8hpp_source.html">multiDomainWave.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a84757e3dfb6bae0c8200f2c557d91ee3"><td class="memItemLeft" align="right" valign="top"><a id="a84757e3dfb6bae0c8200f2c557d91ee3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>multiStateHistory</b> (std::vector&lt; int &gt; in_n, int domains, int functions, std::vector&lt; <a class="el" href="structelementStateHistory.html">elementStateHistory</a> &gt; &amp;states, std::vector&lt; double &gt; &amp;times)</td></tr>
+<tr class="memitem:a84757e3dfb6bae0c8200f2c557d91ee3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiStateHistory.html#a84757e3dfb6bae0c8200f2c557d91ee3">multiStateHistory</a> (std::vector&lt; int &gt; in_n, int domains, int functions, std::vector&lt; <a class="el" href="structelementStateHistory.html">elementStateHistory</a> &gt; &amp;states, std::vector&lt; double &gt; &amp;times)</td></tr>
 <tr class="separator:a84757e3dfb6bae0c8200f2c557d91ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d1090559c26edd9a493494ad15d4910"><td class="memItemLeft" align="right" valign="top"><a id="a2d1090559c26edd9a493494ad15d4910"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const std::vector&lt; double &gt; &amp;x, double t)</td></tr>
+<tr class="memitem:a2d1090559c26edd9a493494ad15d4910"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiStateHistory.html#a2d1090559c26edd9a493494ad15d4910">operator()</a> (const std::vector&lt; double &gt; &amp;x, double t)</td></tr>
 <tr class="separator:a2d1090559c26edd9a493494ad15d4910"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac72f501f584f0df8a9bc28ae8b0122f6"><td class="memItemLeft" align="right" valign="top"><a id="ac72f501f584f0df8a9bc28ae8b0122f6"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>test</b> (double i)</td></tr>
@@ -91,21 +91,138 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>test</b> (double i)</t
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a3f4aa4f5671c982d1f62ce48c10a73a5"><td class="memItemLeft" align="right" valign="top"><a id="a3f4aa4f5671c982d1f62ce48c10a73a5"></a>
-std::vector&lt; <a class="el" href="structelementStateHistory.html">elementStateHistory</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>elementStates</b></td></tr>
+std::vector&lt; <a class="el" href="structelementStateHistory.html">elementStateHistory</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiStateHistory.html#a3f4aa4f5671c982d1f62ce48c10a73a5">elementStates</a></td></tr>
+<tr class="memdesc:a3f4aa4f5671c982d1f62ce48c10a73a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the vector of histories for the several domains <br /></td></tr>
 <tr class="separator:a3f4aa4f5671c982d1f62ce48c10a73a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dc9edcf0b5cde86e83d52af5e61a2c3"><td class="memItemLeft" align="right" valign="top"><a id="a1dc9edcf0b5cde86e83d52af5e61a2c3"></a>
-std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>m_times</b></td></tr>
+std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiStateHistory.html#a1dc9edcf0b5cde86e83d52af5e61a2c3">m_times</a></td></tr>
+<tr class="memdesc:a1dc9edcf0b5cde86e83d52af5e61a2c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">a vector of times, which should align with the states at the innermost of the domain heirarchies <br /></td></tr>
 <tr class="separator:a1dc9edcf0b5cde86e83d52af5e61a2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01324e18d7425064378115033de45856"><td class="memItemLeft" align="right" valign="top"><a id="a01324e18d7425064378115033de45856"></a>
-std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiStateHistory.html#a01324e18d7425064378115033de45856">n</a></td></tr>
+<tr class="memdesc:a01324e18d7425064378115033de45856"><td class="mdescLeft">&#160;</td><td class="mdescRight">legendre order, so number of collocation points in each function <br /></td></tr>
 <tr class="separator:a01324e18d7425064378115033de45856"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad15a8bac5f05cf33847f14852bed40a4"><td class="memItemLeft" align="right" valign="top"><a id="ad15a8bac5f05cf33847f14852bed40a4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>doms</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiStateHistory.html#ad15a8bac5f05cf33847f14852bed40a4">doms</a></td></tr>
+<tr class="memdesc:ad15a8bac5f05cf33847f14852bed40a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of domains <br /></td></tr>
 <tr class="separator:ad15a8bac5f05cf33847f14852bed40a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a217f16e4311e5906ada82ae20773436a"><td class="memItemLeft" align="right" valign="top"><a id="a217f16e4311e5906ada82ae20773436a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>funcs</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiStateHistory.html#a217f16e4311e5906ada82ae20773436a">funcs</a></td></tr>
+<tr class="memdesc:a217f16e4311e5906ada82ae20773436a"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of functions <br /></td></tr>
 <tr class="separator:a217f16e4311e5906ada82ae20773436a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A structure for storing the history of a full wave evolution, which can have multiple functions in each domain, and potentially several domains. This structure can be used as the history object to be passed to boost ode libraries. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a84757e3dfb6bae0c8200f2c557d91ee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84757e3dfb6bae0c8200f2c557d91ee3">&#9670;&nbsp;</a></span>multiStateHistory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">multiStateHistory::multiStateHistory </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>in_n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>domains</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>functions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structelementStateHistory.html">elementStateHistory</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>states</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>times</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>history constructor. Importantly, the <a class="el" href="structelementStateHistory.html">elementStateHistory</a> MUST be populated with the initial data for the routine to work properly, as scalarFunctions store more data than can be provided by the boost ode library </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in_n</td><td>Legendre order of approximation </td></tr>
+    <tr><td class="paramname">domains</td><td>number of domains in the simulation </td></tr>
+    <tr><td class="paramname">functions</td><td>number of functions in each domain <br />
+</td></tr>
+    <tr><td class="paramname">states</td><td>the Histories, already populated with initial data scalarFunctions - these will be populated by reference </td></tr>
+    <tr><td class="paramname">times</td><td>the times, populated with initial time - these will be populated by reference </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2d1090559c26edd9a493494ad15d4910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d1090559c26edd9a493494ad15d4910">&#9670;&nbsp;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void multiStateHistory::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Storage operator for use with boost ode integrators. Takes a flat input and organizes it into the spectral data hierarchy, stores it in the history values. Organization is assumed to follow structure of (domain 0, function 0);(domain 0, function 1);(domain 1, function 0);(domain 1, function 1)... </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>raw flattened ode data </td></tr>
+    <tr><td class="paramname">t</td><td>simulation time </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="multiDomainWave_8hpp_source.html">multiDomainWave.hpp</a></li>
 </ul>

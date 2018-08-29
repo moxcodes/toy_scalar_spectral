@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spectraldata',['spectralData',['../classscalarFunction.html#a554f0a75f00cfbb5ad0c0083e5453714',1,'scalarFunction']]]
+  ['elementstates',['elementStates',['../structmultiStateHistory.html#a3f4aa4f5671c982d1f62ce48c10a73a5',1,'multiStateHistory']]]
 ];

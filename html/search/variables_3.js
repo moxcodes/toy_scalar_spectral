@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['n',['n',['../classlegendreTools_1_1legendre.html#ae0de971865d945ea2024aaf500dc4355',1,'legendreTools::legendre::n()'],['../classlegendreTools_1_1q.html#a9442e4de52207b3de7b8d86fc30a165b',1,'legendreTools::q::n()'],['../classscalarFunction.html#a676ec910c2a14e95c1952565f458f761',1,'scalarFunction::n()']]]
+  ['dmat',['DMat',['../classscalarFunction.html#a61a4443cfdc87341e8d4e3bb5984d867',1,'scalarFunction']]],
+  ['dmats',['DMats',['../classmultiDomainWave.html#a25d3fec45eb09b359c928d59c3c6c23a',1,'multiDomainWave']]],
+  ['dmatshat',['DMatsHat',['../classDGTransmittingMultiWave.html#a4a7b218ed9cf4f744e26d0fbe34cfa9d',1,'DGTransmittingMultiWave']]],
+  ['doms',['doms',['../structmultiStateHistory.html#ad15a8bac5f05cf33847f14852bed40a4',1,'multiStateHistory::doms()'],['../classmultiDomainWave.html#a89db64c0e522aa96f22dc2915d2d31a0',1,'multiDomainWave::doms()']]]
 ];

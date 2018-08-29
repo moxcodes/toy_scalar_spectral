@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['n',['n',['../classlegendreTools_1_1legendre.html#ae0de971865d945ea2024aaf500dc4355',1,'legendreTools::legendre::n()'],['../classlegendreTools_1_1q.html#a9442e4de52207b3de7b8d86fc30a165b',1,'legendreTools::q::n()'],['../classscalarFunction.html#a676ec910c2a14e95c1952565f458f761',1,'scalarFunction::n()']]]
+  ['m_5ftimes',['m_times',['../structmultiStateHistory.html#a1dc9edcf0b5cde86e83d52af5e61a2c3',1,'multiStateHistory']]],
+  ['matrix',['matrix',['../classmatrix.html',1,'']]],
+  ['matrix_3c_20double_20_3e',['matrix&lt; double &gt;',['../classmatrix.html',1,'']]],
+  ['multidomainwave',['multiDomainWave',['../classmultiDomainWave.html',1,'multiDomainWave'],['../classmultiDomainWave.html#a5e48dfac35267b19377e6566027a7476',1,'multiDomainWave::multiDomainWave()']]],
+  ['multistatehistory',['multiStateHistory',['../structmultiStateHistory.html',1,'multiStateHistory'],['../structmultiStateHistory.html#a84757e3dfb6bae0c8200f2c557d91ee3',1,'multiStateHistory::multiStateHistory()']]]
 ];

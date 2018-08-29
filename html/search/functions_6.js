@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['scalarfunction',['scalarFunction',['../classscalarFunction.html#ab6f1aab9bd3970a0ba860130cc71e578',1,'scalarFunction::scalarFunction(int order, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inAbscissas, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inWeights, std::shared_ptr&lt; matrix&lt; double &gt;&gt; inDMat)'],['../classscalarFunction.html#aaedb5211ad9cb101424ccd13f2bd5d21',1,'scalarFunction::scalarFunction(int order, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inAbscissas, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inWeights, std::shared_ptr&lt; matrix&lt; double &gt;&gt; inDMat, std::vector&lt; double &gt; inCollocationData)']]]
+  ['multidomainwave',['multiDomainWave',['../classmultiDomainWave.html#a5e48dfac35267b19377e6566027a7476',1,'multiDomainWave']]],
+  ['multistatehistory',['multiStateHistory',['../structmultiStateHistory.html#a84757e3dfb6bae0c8200f2c557d91ee3',1,'multiStateHistory']]]
 ];
