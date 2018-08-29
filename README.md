@@ -35,3 +35,8 @@ Galerkin (dg).
 
 The number of domains, duration of simulation, step size, and order of spectral
 approximation may all be specified in command line.
+
+
+full documentation generated with
+
+`> doxygen scalarDox`
