@@ -9,7 +9,8 @@ set(LIBRARY_SOURCES
 set(SYSTEM_LINKS
     -lboost_iostreams
     -lboost_system
-    -lboost_filesystem)
+    -lboost_filesystem
+    -lboost_program_options)
 
 add_library(${LIBRARY} ${LIBRARY_SOURCES})
 

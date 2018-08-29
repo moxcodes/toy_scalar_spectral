@@ -4,26 +4,16 @@
 #include "scalarFunction.hpp"
 #include <stdio.h>
 
-/*
-There's a bit of a row-column ordering here. Innermost structure is the time series, so longest.
-ascii diagram:
-(func)
-||||   ||||   ||||        ||||
-----   ----   ----        ----
- |      |      |           |
- --------      -------------
- (element)           |
-     |               |
-     -----------------
-     (history)
-*/
-// TODO: rethink this structuring. At least overload [] in each
+/// A structure for holding a function state history, which just hold a vector
+/// of scalarFunction representing the time series for a single function on a
+/// single domain.
 struct functionStateHistory
 {
-  std::vector<scalarFunction> timeStates;
+  std::vector<scalarFunction> timeStates; ///< the time series data for a single function 
   functionStateHistory(){}
 };
 
+/// A structure for holding a 
 struct elementStateHistory
 {
   std::vector<functionStateHistory> functionStates;
@@ -65,15 +55,16 @@ class multiDomainWave{
 public:
   std::vector<int> n;
   int doms;
-  std::vector<std::vector<double>*> abscissas;
-  std::vector<std::vector<double>*> weights;
-  std::vector<matrix<double>*> DMats;
+  std::vector<std::shared_ptr<std::vector<double>>> abscissas;
+  std::vector<std::shared_ptr<std::vector<double>>> weights;
+  std::vector<std::shared_ptr<matrix<double>>> DMats;
+  std::function<double(double)> boundData;
   bool verbose;
 
-  multiDomainWave(std::vector<int> ord, std::vector<std::vector<double>*> in_abscissas,
-		  std::vector<std::vector<double>*> in_weights, std::vector<matrix<double>*> in_DMats,
-		  double timestep, int domains, bool in_verbose)
-    : n(ord), abscissas(in_abscissas),weights(in_weights),DMats(in_DMats), verbose(in_verbose), doms(domains) {}
+  multiDomainWave(std::vector<int> ord, std::vector<std::shared_ptr<std::vector<double>>> in_abscissas,
+		  std::vector<std::shared_ptr<std::vector<double>>> in_weights, std::vector<std::shared_ptr<matrix<double>>> in_DMats,
+		  double timestep, int domains, std::function<double(double)> in_boundData, bool in_verbose)
+    : n(ord), abscissas(in_abscissas),weights(in_weights),DMats(in_DMats), verbose(in_verbose), boundData(in_boundData), doms(domains) {}
 
   virtual void operator () (const std::vector<double> &x, std::vector<double> &dxdt, const double t){}
 };
@@ -81,14 +72,16 @@ public:
 class collTransmittingMultiWave: public multiDomainWave{
 
 public:
-  collTransmittingMultiWave(std::vector<int> ord, std::vector<std::vector<double>*> in_abscissas,
-			    std::vector<std::vector<double>*> in_weights,std::vector<matrix<double>*> in_DMats,
-			    double timestep, int domains, bool in_verbose)
-    : multiDomainWave(ord,in_abscissas,in_weights,in_DMats,timestep,domains,in_verbose) {}
+  bool reflect;
+  
+  collTransmittingMultiWave(std::vector<int> ord, std::vector<std::shared_ptr<std::vector<double>>> in_abscissas,
+			    std::vector<std::shared_ptr<std::vector<double>>> in_weights,
+			    std::vector<std::shared_ptr<matrix<double>>> in_DMats, double timestep, int domains,
+			    std::function<double(double)> in_boundData, bool isReflecting, bool in_verbose)
+    : multiDomainWave(ord,in_abscissas,in_weights,in_DMats,timestep,domains,in_boundData,in_verbose), reflect(isReflecting) {}
   
   void operator() ( const std::vector<double> &x, std::vector<double> &dxdt, const double t)
   {
-
     // 2 steps : first evolve the bulk of each domain and get out the presumed time dependence
     //           at each interface, then impose agreement at each interface by averaging.
     //           This is slightly different from the Continuous Galerkin method, but only
@@ -113,32 +106,34 @@ public:
 	elstart+=2*n[i];
       }
     //leftmost and rightmost parts need to be modified to obey boundary conditions
-    leftderivspi[0] = -rightderivspi[0] -2*2.0*sin(2.0*t);
-    leftderivspsi[0] = -rightderivspsi[0] + 2*2.0*sin(2.0*t);
-    rightderivspi[doms] = - leftderivspi[doms] - 2*leftderivspsi[doms];
-    rightderivspsi[doms] = -leftderivspsi[doms] - 2*leftderivspi[doms];
+    leftderivspi[0] = -rightderivspi[0] + 2*boundData(t+1.0);
+    leftderivspsi[0] = rightderivspi[0];
+    rightderivspi[doms] = - leftderivspi[doms] - (reflect ? 0 : 2*leftderivspsi[doms]);
+    rightderivspsi[doms] = leftderivspsi[doms];
     //edges evolve via averaging
     elstart=0;
     for(int i=0;i<doms;i++)
       {
 	dxdt[elstart] = (leftderivspi[i] + rightderivspi[i])/2.0;
-	dxdt[elstart + n[i] - 1] = (leftderivspi[i+1] + rightderivspi[i+1])/2.0;
 	dxdt[elstart + n[i]] = (leftderivspsi[i] + rightderivspsi[i])/2.0;
+	dxdt[elstart + n[i] - 1] = (leftderivspi[i+1] + rightderivspi[i+1])/2.0;
 	dxdt[elstart + 2*n[i] - 1] = (leftderivspsi[i+1] + rightderivspsi[i+1])/2.0;
 	elstart+=2*n[i];
       }
+    if((int)(t) == t && verbose)
+	printf("simulation time t=%f",t);
   }
 
   std::vector<double> bulkEvolve(const std::vector<double> &x, std::vector<double> &dxdt,int el,int elstart)
   {
-    std::vector<double>* pi = new std::vector<double>(x.begin()+elstart,x.begin()+elstart+n[el]);
-    std::vector<double>* psi = new std::vector<double>(x.begin()+elstart+n[el],x.begin()+elstart+2*n[el]);
+    std::shared_ptr<std::vector<double>> pi(new std::vector<double>(x.begin()+elstart,x.begin()+elstart+n[el]));
+    std::shared_ptr<std::vector<double>> psi(new std::vector<double>(x.begin()+elstart+n[el],x.begin()+elstart+2*n[el]));
     std::vector<double> dpsi = ((*DMats[el])*(*psi));
     std::vector<double> dpi = ((*DMats[el])*(*pi));
-    for(int i=1;i<n[el]-1;i++)
+    for(int i=0;i<n[el];i++)
       {
 	dxdt[elstart + i] = dpsi[i];
-	dxdt[elstart + n[el]+i] = dpi[i];
+	dxdt[elstart + n[el] + i] = dpi[i];
       }
     return std::vector<double>({dpsi[0],dpi[0],dpsi[n[el]-1],dpi[n[el]-1]});
   }
@@ -150,14 +145,16 @@ public:
   // required for evaluating the flux values
   std::vector<std::vector<double>> leftInterpolant;
   std::vector<std::vector<double>> rightInterpolant;
-  std::vector<std::vector<double>*> baryWeights;
+  std::vector<std::shared_ptr<std::vector<double>>> baryWeights;
 
   std::vector<matrix<double>*> DMatsHat;
-  
-  DGTransmittingMultiWave(std::vector<int> ord, std::vector<std::vector<double>*> in_abscissas,
-		  std::vector<std::vector<double>*> in_weights,std::vector<matrix<double>*> in_DMats,
-			double timestep, int domains, bool in_verbose)
-    : multiDomainWave(ord,in_abscissas,in_weights,in_DMats,timestep,domains,in_verbose)
+  bool reflect;
+
+  DGTransmittingMultiWave(std::vector<int> ord, std::vector<std::shared_ptr<std::vector<double>>> in_abscissas,
+			  std::vector<std::shared_ptr<std::vector<double>>> in_weights,
+			  std::vector<std::shared_ptr<matrix<double>>> in_DMats, double timestep, int domains,
+			  std::function<double(double)> in_boundData, bool isReflecting, bool in_verbose)
+    : multiDomainWave(ord,in_abscissas,in_weights,in_DMats,timestep,domains,in_boundData,in_verbose),reflect(isReflecting)
   {
     double lefts;
     double leftt;
@@ -216,8 +213,8 @@ public:
 	elstart+=2*n[d];
       }
 
-    rightfluxpi.push_back(cos(2.0*t));
-    rightfluxpsi.push_back(-cos(2.0*t));
+    rightfluxpi.push_back(boundData(t+1.0));
+    rightfluxpsi.push_back(-boundData(t+1.0));
 
     for(int d=0;d<doms;d++)
       {
@@ -228,8 +225,8 @@ public:
       }
 
     
-    leftfluxpi.push_back(0);
-    leftfluxpsi.push_back(0);
+    leftfluxpi.push_back(reflect ? -rightfluxpi[doms]: 0);
+    leftfluxpsi.push_back(reflect ? -rightfluxpi[doms]: 0);
 
     //step 2: evolve the bulk using flux vals
     std::vector<double> dpsi;
@@ -252,5 +249,7 @@ public:
 	elstart+=2*n[d];
       }
   }
+  if((int)(t) == t && verbose)
+    printf("simulation time t=%f",t);
 
 };

@@ -2,16 +2,13 @@
 #include <stdio.h>
 
 
-double scalarFunction::atCP(int i){
-  return collocationData[i];}
-
 double scalarFunction::at(int i){
   return collocationData[i];}
 
-double scalarFunction::dxCP(int i){
+double scalarFunction::dx(int i){
   return ((*DMat)*collocationData)[i];}
 
-double scalarFunction::ddxCP(int i){
+double scalarFunction::ddx(int i){
   return ((*DMat)*(*DMat)*collocationData)[i];}
 
 
@@ -33,7 +30,7 @@ double scalarFunction::dx(double x){
   return val;
 }
 
-double scalarFunction::at(double x,std::vector<double>* baryWeights){
+double scalarFunction::at(double x,std::shared_ptr<std::vector<double>> baryWeights){
   double den = 0;
   double num = 0;
   double prod;
@@ -47,7 +44,9 @@ double scalarFunction::at(double x,std::vector<double>* baryWeights){
 }
 
 
-double scalarFunction::dx(double x,std::vector<double>* baryWeights){
+
+
+double scalarFunction::dx(double x,std::shared_ptr<std::vector<double>> baryWeights){
   double den = 0;
   double num = 0;
   double pointval = at(x);
@@ -60,6 +59,7 @@ double scalarFunction::dx(double x,std::vector<double>* baryWeights){
     }
   return num/den;
 }
+
 
 
 double scalarFunction::ddx(double x)
@@ -76,7 +76,7 @@ double scalarFunction::ddx(double x)
 void scalarFunction::quadSum()
 {
   if(spectralData == NULL)
-    spectralData = new std::vector<double>((size_t)n);
+    spectralData = std::shared_ptr<std::vector<double>>(new std::vector<double>((size_t)n));
   
   for(int i=0;i<n;i++)
     {

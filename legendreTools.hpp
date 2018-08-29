@@ -22,7 +22,7 @@ namespace legendreTools{
   /// \return the first derivative, evaluated from the analytic formula associated with legendre polys
   ///         \f$P_n^\prime(x) = n \frac{x P_n(x) - P_{n-1}(x)}{x^2 - 1}\f$
   /// \sa legendreDDeriv
-  double legendreDeriv(const int n, const double x)
+  static double legendreDeriv(const int n, const double x)
   {
     if(n==0)
       return 0;
@@ -36,7 +36,7 @@ namespace legendreTools{
   /// \return the first derivative, evaluated from the analytic formula associated with legendre polys
   ///         \f$P_n^{\prime\prime}(x) = n\frac{((n - 1) x^2 - n - 1)P_n(x) + 2 x P_{n - 1}(x)}{(x^2 - 1)^2}\f$
   /// \sa legendreDeriv
-  double legendreDDeriv(int n, double x)
+  static double legendreDDeriv(int n, double x)
   {
     return n*((((n - 1)* pow(x,2) - n - 1) *  boost::math::legendre_p(n,x) + 2 * x * boost::math::legendre_p(n-1,x))
 	       /pow(pow(x,2) - 1,2));
@@ -202,7 +202,7 @@ namespace legendreTools{
   {
     std::shared_ptr<std::vector<double>> weights(new std::vector<double>());
     for(int i=0;i<order;i++)
-      weights->push_back(2.0/((1 - pow(abscissas->at(i),2))*pow(legendreDeriv(order,abscissas->at(i)),2)));
+      weights->push_back(2.0/((1.0 - pow(abscissas->at(i),2))*pow(legendreDeriv(order,abscissas->at(i)),2)));
     return weights;
   }
 
@@ -216,10 +216,10 @@ namespace legendreTools{
   static std::shared_ptr<std::vector<double>> generateGLWeights(int order, std::shared_ptr<std::vector<double>> abscissas)
   {
     std::shared_ptr<std::vector<double>> weights(new std::vector<double>());
-    weights->push_back(2/(order*(order - 1)));
+    weights->push_back(2.0/((double)(order*(order - 1))));
     for(int i=1;i<order-1;i++)
       weights->push_back(2.0/((order*(order -1.0))*pow(boost::math::legendre_p(order-1,abscissas->at(i)),2)));
-    weights->push_back(2/(order*(order - 1)));
+    weights->push_back(2.0/((double)(order*(order - 1))));
     return weights;
   }
 

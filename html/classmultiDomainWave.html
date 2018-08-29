@@ -88,9 +88,9 @@ Inheritance diagram for multiDomainWave:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a86012ed1039b85228265fe32d09f3afd"><td class="memItemLeft" align="right" valign="top"><a id="a86012ed1039b85228265fe32d09f3afd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>multiDomainWave</b> (std::vector&lt; int &gt; ord, std::vector&lt; std::vector&lt; double &gt; *&gt; in_abscissas, std::vector&lt; std::vector&lt; double &gt; *&gt; in_weights, std::vector&lt; <a class="el" href="classmatrix.html">matrix</a>&lt; double &gt; *&gt; in_DMats, double timestep, int domains, bool in_verbose)</td></tr>
-<tr class="separator:a86012ed1039b85228265fe32d09f3afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac51fbf5ae3ea52b1753b9cd94515aba9"><td class="memItemLeft" align="right" valign="top"><a id="ac51fbf5ae3ea52b1753b9cd94515aba9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>multiDomainWave</b> (std::vector&lt; int &gt; ord, std::vector&lt; std::shared_ptr&lt; std::vector&lt; double &gt;&gt;&gt; in_abscissas, std::vector&lt; std::shared_ptr&lt; std::vector&lt; double &gt;&gt;&gt; in_weights, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmatrix.html">matrix</a>&lt; double &gt;&gt;&gt; in_DMats, double timestep, int domains, std::function&lt; double(double)&gt; in_boundData, bool in_verbose)</td></tr>
+<tr class="separator:ac51fbf5ae3ea52b1753b9cd94515aba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21f3420fdeaf2286ba38a1b99ba5c176"><td class="memItemLeft" align="right" valign="top"><a id="a21f3420fdeaf2286ba38a1b99ba5c176"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const std::vector&lt; double &gt; &amp;x, std::vector&lt; double &gt; &amp;dxdt, const double t)</td></tr>
 <tr class="separator:a21f3420fdeaf2286ba38a1b99ba5c176"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,15 +103,18 @@ std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>n
 <tr class="memitem:a89db64c0e522aa96f22dc2915d2d31a0"><td class="memItemLeft" align="right" valign="top"><a id="a89db64c0e522aa96f22dc2915d2d31a0"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>doms</b></td></tr>
 <tr class="separator:a89db64c0e522aa96f22dc2915d2d31a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab761d678dac7512f9ed35c067dbbd284"><td class="memItemLeft" align="right" valign="top"><a id="ab761d678dac7512f9ed35c067dbbd284"></a>
-std::vector&lt; std::vector&lt; double &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>abscissas</b></td></tr>
-<tr class="separator:ab761d678dac7512f9ed35c067dbbd284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb41775f83c3a3fb7d39ac8611000d7a"><td class="memItemLeft" align="right" valign="top"><a id="aeb41775f83c3a3fb7d39ac8611000d7a"></a>
-std::vector&lt; std::vector&lt; double &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>weights</b></td></tr>
-<tr class="separator:aeb41775f83c3a3fb7d39ac8611000d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d9e10a3506e75284c08be7a93efdab5"><td class="memItemLeft" align="right" valign="top"><a id="a5d9e10a3506e75284c08be7a93efdab5"></a>
-std::vector&lt; <a class="el" href="classmatrix.html">matrix</a>&lt; double &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>DMats</b></td></tr>
-<tr class="separator:a5d9e10a3506e75284c08be7a93efdab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a187a2bc067c47be544f936a780afdf92"><td class="memItemLeft" align="right" valign="top"><a id="a187a2bc067c47be544f936a780afdf92"></a>
+std::vector&lt; std::shared_ptr&lt; std::vector&lt; double &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>abscissas</b></td></tr>
+<tr class="separator:a187a2bc067c47be544f936a780afdf92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98b4fa12634d81e62754d668cac37b44"><td class="memItemLeft" align="right" valign="top"><a id="a98b4fa12634d81e62754d668cac37b44"></a>
+std::vector&lt; std::shared_ptr&lt; std::vector&lt; double &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>weights</b></td></tr>
+<tr class="separator:a98b4fa12634d81e62754d668cac37b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25d3fec45eb09b359c928d59c3c6c23a"><td class="memItemLeft" align="right" valign="top"><a id="a25d3fec45eb09b359c928d59c3c6c23a"></a>
+std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmatrix.html">matrix</a>&lt; double &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>DMats</b></td></tr>
+<tr class="separator:a25d3fec45eb09b359c928d59c3c6c23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a106075024bd391e1a971a7d1eedfa556"><td class="memItemLeft" align="right" valign="top"><a id="a106075024bd391e1a971a7d1eedfa556"></a>
+std::function&lt; double(double)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>boundData</b></td></tr>
+<tr class="separator:a106075024bd391e1a971a7d1eedfa556"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa3fe8c6ec4acae81d0cc9a398319a3c"><td class="memItemLeft" align="right" valign="top"><a id="aaa3fe8c6ec4acae81d0cc9a398319a3c"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>verbose</b></td></tr>
 <tr class="separator:aaa3fe8c6ec4acae81d0cc9a398319a3c"><td class="memSeparator" colspan="2">&#160;</td></tr>

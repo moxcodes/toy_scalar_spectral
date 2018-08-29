@@ -7,3 +7,6 @@ run_wave
 scalarFunction.o
 singleDomainWave.o
 *~
+*#
+#*
+.#*

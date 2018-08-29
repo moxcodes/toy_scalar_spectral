@@ -89,10 +89,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a310d0bf785dd10af4d2968f6c7b4a8fc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelegendreTools.html#a310d0bf785dd10af4d2968f6c7b4a8fc">legendreDeriv</a> (const int n, const double x)</td></tr>
-<tr class="separator:a310d0bf785dd10af4d2968f6c7b4a8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50200cf8c26189e01cc09e553e88993f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelegendreTools.html#a50200cf8c26189e01cc09e553e88993f">legendreDDeriv</a> (int n, double x)</td></tr>
-<tr class="separator:a50200cf8c26189e01cc09e553e88993f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3405fbec14c82d6d3828f2b276b64e8a"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelegendreTools.html#a3405fbec14c82d6d3828f2b276b64e8a">legendreDeriv</a> (const int n, const double x)</td></tr>
+<tr class="separator:a3405fbec14c82d6d3828f2b276b64e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bc9673dec1f9e7ccd7431d64e0cfddf"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelegendreTools.html#a4bc9673dec1f9e7ccd7431d64e0cfddf">legendreDDeriv</a> (int n, double x)</td></tr>
+<tr class="separator:a4bc9673dec1f9e7ccd7431d64e0cfddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76b554763f20f0b62655c549b700cf88"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelegendreTools.html#a76b554763f20f0b62655c549b700cf88">generateAbscissas</a> (int order)</td></tr>
 <tr class="separator:a76b554763f20f0b62655c549b700cf88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb9f278cc2647225a37ebc53ba2bda58"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacelegendreTools.html#acb9f278cc2647225a37ebc53ba2bda58">generateGLAbscissas</a> (int order)</td></tr>
@@ -358,14 +358,17 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a50200cf8c26189e01cc09e553e88993f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50200cf8c26189e01cc09e553e88993f">&#9670;&nbsp;</a></span>legendreDDeriv()</h2>
+<a id="a4bc9673dec1f9e7ccd7431d64e0cfddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bc9673dec1f9e7ccd7431d64e0cfddf">&#9670;&nbsp;</a></span>legendreDDeriv()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double legendreTools::legendreDDeriv </td>
+          <td class="memname">static double legendreTools::legendreDDeriv </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>n</em>, </td>
@@ -382,6 +385,11 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Value of the second derivative of a particular Legendre polynomial order at a particular point </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -391,18 +399,21 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the first derivative, evaluated from the analytic formula associated with legendre polys \(P_n^{\prime\prime}(x) = n\frac{((n - 1) x^2 - n - 1)P_n(x) + 2 x P_{n - 1}(x)}{(x^2 - 1)^2}\) </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacelegendreTools.html#a310d0bf785dd10af4d2968f6c7b4a8fc">legendreDeriv</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacelegendreTools.html#a3405fbec14c82d6d3828f2b276b64e8a">legendreDeriv</a> </dd></dl>
 
 </div>
 </div>
-<a id="a310d0bf785dd10af4d2968f6c7b4a8fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a310d0bf785dd10af4d2968f6c7b4a8fc">&#9670;&nbsp;</a></span>legendreDeriv()</h2>
+<a id="a3405fbec14c82d6d3828f2b276b64e8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3405fbec14c82d6d3828f2b276b64e8a">&#9670;&nbsp;</a></span>legendreDeriv()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double legendreTools::legendreDeriv </td>
+          <td class="memname">static double legendreTools::legendreDeriv </td>
           <td>(</td>
           <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>n</em>, </td>
@@ -419,6 +430,11 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Value of the first derivative of a particular Legendre polynomial order at a particular point </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -428,7 +444,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the first derivative, evaluated from the analytic formula associated with legendre polys \(P_n^\prime(x) = n \frac{x P_n(x) - P_{n-1}(x)}{x^2 - 1}\) </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacelegendreTools.html#a50200cf8c26189e01cc09e553e88993f">legendreDDeriv</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacelegendreTools.html#a4bc9673dec1f9e7ccd7431d64e0cfddf">legendreDDeriv</a> </dd></dl>
 
 </div>
 </div>
