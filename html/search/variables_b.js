@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timestates',['timeStates',['../structfunctionStateHistory.html#a3848ca84f3538cf8b4f14b04f670d3f9',1,'functionStateHistory']]]
+  ['spectraldata',['spectralData',['../classscalarFunction.html#a554f0a75f00cfbb5ad0c0083e5453714',1,'scalarFunction']]]
 ];

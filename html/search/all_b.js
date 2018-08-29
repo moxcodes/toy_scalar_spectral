@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['q',['q',['../classlegendreTools_1_1q.html',1,'legendreTools::q'],['../classlegendreTools_1_1q.html#adffd8612c965ff578a51e24acbf53632',1,'legendreTools::q::q()']]],
-  ['quadsum',['quadSum',['../classscalarFunction.html#a91ef0b94fbc982b421c4dc352484c131',1,'scalarFunction']]]
+  ['plotbottomnmodes',['plotBottomNModes',['../namespacescalarPlots.html#a8b03777075ff76cf94f641ef6c7a338b',1,'scalarPlots']]],
+  ['plotwave',['plotWave',['../namespacescalarPlots.html#a76e9c480783d20a56e91f9ee9bf22cd4',1,'scalarPlots']]],
+  ['plotwaveandderiv',['plotWaveandDeriv',['../namespacescalarPlots.html#a1052568618f0f3f9e4e91b08f9584e96',1,'scalarPlots']]],
+  ['plotwavedx',['plotWaveDx',['../namespacescalarPlots.html#ab0bf430a86b4612b30835068403adb34',1,'scalarPlots']]]
 ];

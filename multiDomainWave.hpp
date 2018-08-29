@@ -72,7 +72,6 @@ struct multiStateHistory
       }
     m_times.push_back(t);
   }
-  int test(double i){return 0;}
 };
 
 
@@ -105,6 +104,8 @@ public:
   virtual void operator () (const std::vector<double> &x, std::vector<double> &dxdt, const double t){}
 };
 
+
+/// Continuous boundary multiple-domain wave simulation class
 
 /// A specialization class from multiDomainWave for the collocation point wave
 /// multiple-domain simulation. This multi-domain method is intended for use
@@ -181,7 +182,7 @@ public:
 	elstart+=2*n[i];
       }
     if((int)(t) == t && verbose)
-	printf("simulation time t=%f",t);
+	printf("simulation time t=%f\n",t);
   }
 
 
@@ -211,6 +212,8 @@ public:
 };
 
 
+/// DG simulation class
+
 /// A specialization class from multiDomainWave for the Discontinuous Galerkin
 /// wave multiple-domain simulation. This multi-domain method is intended for
 /// use with Legendre Gauss abscissas, and evolves by imposing numerical fluxes
@@ -224,6 +227,19 @@ public:
   std::vector<matrix<double>*> DMatsHat; ///< the adjusted matrix datas for the DG computation
   bool reflect;///< true if right boundary should reflect, false if transmit
 
+
+  /// The discontinous Galerkin wave constructor, takes in much data about wave
+  /// options. In addition to the typical data, it requires the interpolation
+  /// functions evaluated at +/-1 and the adjusted derivative matrix according
+  /// to ratios of weights. 
+  /// \param ord Legendre order of simulation
+  /// \param in_abscissas vector of abscissa data, one for each domain
+  /// \param in_weights vector of weight data, one for each domain
+  /// \param in_DMats vector of derivative matrix data, one for each domain
+  /// \param domains number of domains
+  /// \param in_boundData a function representing the first time derivative used for left bound
+  /// \param isReflecting true if right bound should reflect, false if transmit
+  /// \param in_verbose whether the function should output status checkpounts  
   DGTransmittingMultiWave(std::vector<int> ord, std::vector<std::shared_ptr<std::vector<double>>> in_abscissas,
 			  std::vector<std::shared_ptr<std::vector<double>>> in_weights,
 			  std::vector<std::shared_ptr<matrix<double>>> in_DMats, int domains,
@@ -261,7 +277,15 @@ public:
 	    DMatsHat[d]->matData[i][j] = -DMats[d]->matData[j][i] *weights[d]->at(j)/weights[d]->at(i);
       }
   }
-  
+
+  /// Wave evolution operator, for use in boost ode libraries. This gives the
+  /// first derivative of each collocation point with respect to time by
+  /// computing the left and right fluxes at each domain boundary, then using
+  /// those in the DG formulas found in [Kopriva ch 8]
+  /// \param x the set of flattened collocation points
+  /// \param dxdt the set of first derivatives with respect to time - populated
+  /// by this function as return parameter
+  /// \param t simulation time of the timestep considered
   void operator() ( const std::vector<double> &x, std::vector<double> &dxdt, const double t)
   {
 
@@ -322,8 +346,8 @@ public:
 	  }
 	elstart+=2*n[d];
       }
+  
+    if((int)(t) == t && verbose)
+      printf("simulation time t=%f\n",t);
   }
-  if((int)(t) == t && verbose)
-    printf("simulation time t=%f",t);
-
 };

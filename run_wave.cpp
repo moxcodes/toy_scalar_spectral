@@ -7,7 +7,8 @@
 #include "multiDomainWave.hpp"
 #include "scalarWavePlots.hpp"
 
-
+/// Template metaprogramming type-checker using SFINAE to verify that the
+/// history parameter passed to odeEvolve is appropriately callable
 template <typename T>
 struct checkHistoryEval
 {
@@ -22,7 +23,8 @@ struct checkHistoryEval
   static const bool value = std::is_same<std::true_type, decltype(test<T>(nullptr))>::value;
 };
 
-
+/// Template metaprogramming type-checker using SFINAE to verify that the wave
+/// parameter passed to odeEvolve is appropriately callable
 template <typename T>
 struct checkWaveEval
 {
@@ -38,7 +40,12 @@ struct checkWaveEval
 };
 
   
-
+/// perform the actual evolution by passing the values on to the boost libraries
+/// \param initial the initial data
+/// \param wave an initialized wave object representing the 'system'
+/// \param duration final time of the system
+/// \param stepSize time step
+/// \param waveHist history object to record the states to.
 void odeEvolve(std::vector<double> initial, auto &wave, double duration, double stepSize,
 		     auto &waveHist){
   static_assert(checkHistoryEval<typename std::remove_reference<decltype(waveHist)>::type >::value,
@@ -54,7 +61,7 @@ int main(int argv, char * args[])
 {
 
   //initialize command line options
-  boost::program_options::options_description desc("Options:");
+  boost::program_options::options_description desc("Options");
   desc.add_options()
     ("help","show this help message")
     ("id",boost::program_options::value<std::string>(),"specify initial data type (sin,fastsin,pulse)")
@@ -221,19 +228,19 @@ int main(int argv, char * args[])
       plotAccumulator.push_back(std::vector<scalarFunction>());
       for(int j=0;j<states.size();j++)
 	plotAccumulator[i/(stepSize)].push_back(states[j].functionStates[0].timeStates[i]);
-      multiPlotWaveandDeriv(plotAccumulator[i/stepSize]);
+      scalarPlots::multiPlotWaveandDeriv(plotAccumulator[i/stepSize]);
     }
 
   //plot the top 3 wavemodes in each domain as a function of time
 
   
-  multiPlotTopNModes(plotAccumulator,doms,3,duration,duration/(step*10000) + 1);
+  scalarPlots::multiPlotTopNModes(plotAccumulator,doms,3,duration,duration/(step*10000) + 1);
 
   //wait a moment
   sleep(3);
 
   //plot the bottom 3 wavemodes in each domain as a function of time
-  multiPlotBottomNModes(plotAccumulator,doms,3,duration,duration/(step*10000) + 1);
+  scalarPlots::multiPlotBottomNModes(plotAccumulator,doms,3,duration,duration/(step*10000) + 1);
   return 0;
 }
   

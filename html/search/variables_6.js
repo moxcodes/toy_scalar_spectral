@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['leftinterpolant',['leftInterpolant',['../classDGTransmittingMultiWave.html#aa9692eb6f9fe095ccb3f9df26c8ea5da',1,'DGTransmittingMultiWave']]]
+  ['gp',['gp',['../namespacescalarPlots.html#ab2a61a268582653a3dd4b5217c91f091',1,'scalarPlots']]]
 ];

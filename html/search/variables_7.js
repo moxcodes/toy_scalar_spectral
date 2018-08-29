@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['m_5ftimes',['m_times',['../structmultiStateHistory.html#a1dc9edcf0b5cde86e83d52af5e61a2c3',1,'multiStateHistory']]]
+  ['leftinterpolant',['leftInterpolant',['../classDGTransmittingMultiWave.html#aa9692eb6f9fe095ccb3f9df26c8ea5da',1,'DGTransmittingMultiWave']]]
 ];

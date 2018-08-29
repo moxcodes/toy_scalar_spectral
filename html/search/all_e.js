@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['timestates',['timeStates',['../structfunctionStateHistory.html#a3848ca84f3538cf8b4f14b04f670d3f9',1,'functionStateHistory']]],
-  ['transmittingwave',['transmittingWave',['../classtransmittingWave.html',1,'']]]
+  ['scalarfunction',['scalarFunction',['../classscalarFunction.html',1,'scalarFunction'],['../classscalarFunction.html#ab6f1aab9bd3970a0ba860130cc71e578',1,'scalarFunction::scalarFunction(int order, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inAbscissas, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inWeights, std::shared_ptr&lt; matrix&lt; double &gt;&gt; inDMat)'],['../classscalarFunction.html#aaedb5211ad9cb101424ccd13f2bd5d21',1,'scalarFunction::scalarFunction(int order, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inAbscissas, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inWeights, std::shared_ptr&lt; matrix&lt; double &gt;&gt; inDMat, std::vector&lt; double &gt; inCollocationData)']]],
+  ['scalarplots',['scalarPlots',['../namespacescalarPlots.html',1,'']]],
+  ['spectraldata',['spectralData',['../classscalarFunction.html#a554f0a75f00cfbb5ad0c0083e5453714',1,'scalarFunction']]]
 ];

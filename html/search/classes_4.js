@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['functionstatehistory',['functionStateHistory',['../structfunctionStateHistory.html',1,'']]]
+  ['legendre',['legendre',['../classlegendreTools_1_1legendre.html',1,'legendreTools']]]
 ];

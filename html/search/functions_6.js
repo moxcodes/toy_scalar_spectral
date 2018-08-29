@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['multidomainwave',['multiDomainWave',['../classmultiDomainWave.html#a5e48dfac35267b19377e6566027a7476',1,'multiDomainWave']]],
-  ['multistatehistory',['multiStateHistory',['../structmultiStateHistory.html#a84757e3dfb6bae0c8200f2c557d91ee3',1,'multiStateHistory']]]
+  ['legendre',['legendre',['../classlegendreTools_1_1legendre.html#aadbc5d742d698baf0f7b06aecb1cdcb5',1,'legendreTools::legendre']]],
+  ['legendredderiv',['legendreDDeriv',['../namespacelegendreTools.html#a4bc9673dec1f9e7ccd7431d64e0cfddf',1,'legendreTools']]],
+  ['legendrederiv',['legendreDeriv',['../namespacelegendreTools.html#a3405fbec14c82d6d3828f2b276b64e8a',1,'legendreTools']]]
 ];

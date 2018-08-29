@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dgtransmittingmultiwave',['DGTransmittingMultiWave',['../classDGTransmittingMultiWave.html',1,'']]]
+  ['elementstatehistory',['elementStateHistory',['../structelementStateHistory.html',1,'']]]
 ];

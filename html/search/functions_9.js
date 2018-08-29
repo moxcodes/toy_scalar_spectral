@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['scalarfunction',['scalarFunction',['../classscalarFunction.html#ab6f1aab9bd3970a0ba860130cc71e578',1,'scalarFunction::scalarFunction(int order, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inAbscissas, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inWeights, std::shared_ptr&lt; matrix&lt; double &gt;&gt; inDMat)'],['../classscalarFunction.html#aaedb5211ad9cb101424ccd13f2bd5d21',1,'scalarFunction::scalarFunction(int order, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inAbscissas, std::shared_ptr&lt; std::vector&lt; double &gt;&gt; inWeights, std::shared_ptr&lt; matrix&lt; double &gt;&gt; inDMat, std::vector&lt; double &gt; inCollocationData)']]]
+  ['plotbottomnmodes',['plotBottomNModes',['../namespacescalarPlots.html#a8b03777075ff76cf94f641ef6c7a338b',1,'scalarPlots']]],
+  ['plotwave',['plotWave',['../namespacescalarPlots.html#a76e9c480783d20a56e91f9ee9bf22cd4',1,'scalarPlots']]],
+  ['plotwaveandderiv',['plotWaveandDeriv',['../namespacescalarPlots.html#a1052568618f0f3f9e4e91b08f9584e96',1,'scalarPlots']]],
+  ['plotwavedx',['plotWaveDx',['../namespacescalarPlots.html#ab0bf430a86b4612b30835068403adb34',1,'scalarPlots']]]
 ];

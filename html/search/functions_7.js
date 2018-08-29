@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['operator_28_29',['operator()',['../classlegendreTools_1_1legendre.html#a02ecb776e9bfd9f190edda80bb9cebd1',1,'legendreTools::legendre::operator()()'],['../classlegendreTools_1_1q.html#a9b6bdf63b9d5dfdbf9cabbb90331dbce',1,'legendreTools::q::operator()()'],['../structmultiStateHistory.html#a2d1090559c26edd9a493494ad15d4910',1,'multiStateHistory::operator()()'],['../classmultiDomainWave.html#a21f3420fdeaf2286ba38a1b99ba5c176',1,'multiDomainWave::operator()()'],['../classcollTransmittingMultiWave.html#a6122ac25f1cf564997c30af9d3f8535c',1,'collTransmittingMultiWave::operator()()'],['../classDGTransmittingMultiWave.html#af497b9809858f8540f8ec6f7fb512042',1,'DGTransmittingMultiWave::operator()()']]]
+  ['matrix',['matrix',['../classmatrix.html#a357d2d9f5948ff552f592c6675577492',1,'matrix::matrix(size_t N)'],['../classmatrix.html#a19b25300f4d0e7e807f71e390e8dcdaf',1,'matrix::matrix(size_t N, T val)'],['../classmatrix.html#aac17009c2435a053fb6c80cf5810f77e',1,'matrix::matrix(size_t N, std::vector&lt; std::vector&lt; T &gt;&gt; initial)']]],
+  ['multidomainwave',['multiDomainWave',['../classmultiDomainWave.html#a5e48dfac35267b19377e6566027a7476',1,'multiDomainWave']]],
+  ['multiplotbottomnmodes',['multiPlotBottomNModes',['../namespacescalarPlots.html#a9c05425df5ceac2c58c8008aae17c05a',1,'scalarPlots']]],
+  ['multiplottopnmodes',['multiPlotTopNModes',['../namespacescalarPlots.html#af1ca1871efdac13e6b505c8bcdf9bd86',1,'scalarPlots']]],
+  ['multiplotwaveandderiv',['multiPlotWaveandDeriv',['../namespacescalarPlots.html#aa871c8df0ffbf9fe87f9036a90624e43',1,'scalarPlots']]],
+  ['multistatehistory',['multiStateHistory',['../structmultiStateHistory.html#a84757e3dfb6bae0c8200f2c557d91ee3',1,'multiStateHistory']]]
 ];

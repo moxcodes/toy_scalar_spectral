@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['reflect',['reflect',['../classcollTransmittingMultiWave.html#ad4c167a6bc76bdcee445be0098d0dac3',1,'collTransmittingMultiWave::reflect()'],['../classDGTransmittingMultiWave.html#ab65c95b914449e396546d56b71557043',1,'DGTransmittingMultiWave::reflect()']]],
-  ['rightinterpolant',['rightInterpolant',['../classDGTransmittingMultiWave.html#ae87b850d0815b8c81547ce22e683c900',1,'DGTransmittingMultiWave']]]
+  ['q',['q',['../classlegendreTools_1_1q.html',1,'legendreTools::q'],['../classlegendreTools_1_1q.html#adffd8612c965ff578a51e24acbf53632',1,'legendreTools::q::q()']]],
+  ['quadsum',['quadSum',['../classscalarFunction.html#a91ef0b94fbc982b421c4dc352484c131',1,'scalarFunction']]]
 ];

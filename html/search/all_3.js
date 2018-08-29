@@ -1,7 +1,7 @@
 var searchData=
 [
   ['ddx',['ddx',['../classscalarFunction.html#a6ef4e69e1a54473c1e791cfbbefdb696',1,'scalarFunction::ddx(int i)'],['../classscalarFunction.html#ab08865566baa2fda19790819c891d849',1,'scalarFunction::ddx(double x)']]],
-  ['dgtransmittingmultiwave',['DGTransmittingMultiWave',['../classDGTransmittingMultiWave.html',1,'']]],
+  ['dgtransmittingmultiwave',['DGTransmittingMultiWave',['../classDGTransmittingMultiWave.html',1,'DGTransmittingMultiWave'],['../classDGTransmittingMultiWave.html#a74993052727e9f23244d54769e454ef3',1,'DGTransmittingMultiWave::DGTransmittingMultiWave()']]],
   ['dmat',['DMat',['../classscalarFunction.html#a61a4443cfdc87341e8d4e3bb5984d867',1,'scalarFunction']]],
   ['dmats',['DMats',['../classmultiDomainWave.html#a25d3fec45eb09b359c928d59c3c6c23a',1,'multiDomainWave']]],
   ['dmatshat',['DMatsHat',['../classDGTransmittingMultiWave.html#a4a7b218ed9cf4f744e26d0fbe34cfa9d',1,'DGTransmittingMultiWave']]],

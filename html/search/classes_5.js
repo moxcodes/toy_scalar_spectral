@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['legendre',['legendre',['../classlegendreTools_1_1legendre.html',1,'legendreTools']]]
+  ['matrix',['matrix',['../classmatrix.html',1,'']]],
+  ['multidomainwave',['multiDomainWave',['../classmultiDomainWave.html',1,'']]],
+  ['multistatehistory',['multiStateHistory',['../structmultiStateHistory.html',1,'']]]
 ];
