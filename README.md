@@ -2,7 +2,7 @@
 
 ## usage:
 
-`>./run-wave --help
+>./run-wave --help
 
 Options:
 --help                show this help message
@@ -15,7 +15,8 @@ Options:
 --type arg            type of spectral simulation (coll,dg)
 --ord arg             spectral order
 --no-vis              turn off default visualizations
---verbose             turn on periodic status updates during simulation`
+--verbose             turn on periodic status updates during simulation
+
 
 Default is to run a simple transmitting wave using discontinuous Galerkin method
 with two domains and transmitting boundary conditions and a modest spectral
